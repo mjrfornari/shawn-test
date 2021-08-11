@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import { Link } from 'react-router-dom'
+import { useIntersectionObserver } from 'ax-react-lib';
 
 import api from '../services/api'
 
@@ -8,15 +9,30 @@ import './styles/Home.css';
 
 function Home() {
     const [data, setData] = useState([])
-    const [lastSince, setLastSince] = useState(0)
+    const [lastPage, setLastPage] = useState(false)
+    const ref = useRef(null)
+
+    const isBottomVisible = useIntersectionObserver(
+        ref,
+        {
+          threshold: 0
+        },
+        false
+    );
 
     useEffect(() => {
-        const fetchData = async () => {
-            setData(await api.getUsers(0))
+        const appendData = async () => {
+            if (!lastPage) {
+                let appendData = await api.getUsers(data[data.length-1]?.id || 0, setLastPage)
+                const appendedData = [...data].concat(appendData) 
+                setData(appendedData)
+            }
         }
- 
-        fetchData()
-    }, [])
+
+        if (isBottomVisible) {
+            appendData()
+        }
+    }, [isBottomVisible]);
 
     const mapItems = (item, index) => {
         return (
@@ -26,6 +42,7 @@ function Home() {
                     search: "?login="+item.login,
                 }} 
                 className="Home__link"
+                key={item.id}
             >
                 <ListGroupItem className="Home__user-item">
                     <div className="user-item__avatar">
@@ -40,17 +57,6 @@ function Home() {
         )
     }
 
-    const handleNextPage = async (e) => {
-        e.preventDefault()
-        setLastSince(data[0].id)
-        setData(await api.getUsers((data[data.length-1].id)))
-    }
-
-    const handlePrevPage = async (e) => {
-        e.preventDefault()
-        setData(await api.getUsers(lastSince))
-    }
-
     let listedItems = data.map(mapItems)
 
     return (
@@ -61,11 +67,7 @@ function Home() {
                     <ListGroup>
                         {listedItems}
                     </ListGroup>
-                </div>
-                <div className="Home__pagination">
-                    <button onClick={handlePrevPage}>{'<'}</button>
-                    <button onClick={handleNextPage}>{'>'}</button>
-                    
+                    <div ref={ref}/>
                 </div>
             </div>
         </div>

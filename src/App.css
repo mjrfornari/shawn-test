@@ -4,7 +4,7 @@
   font-family: 'Fjalla One', sans-serif;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   background: var(--background-color);
 }
 
@@ -32,6 +32,7 @@ button {
   color: var(--font-color);
   margin-bottom: 20px;
   font-size: 0.6rem;
+  margin-top: 20px;
 }
 
 a {
@@ -40,14 +41,56 @@ a {
   margin-left: 0;
 }
 
+a:active {
+  text-decoration: none;
+  color: var(--color-primary);
+  margin-left: 0;
+}
+
+a:hover {
+  text-decoration: none;
+  color: var(--color-primary);
+  margin-left: 0;
+}
+
+.user-repos-accordion {
+  margin-top: 10px;
+}
+
 .page--content {
   color: var(--font-color);
   display: flex;
-  height: 100%;
+  /* height: 100%; */
   flex-direction: column;
   flex: 1;
 }
 
 .page--content h2{
   text-align: center;
+}
+
+button:active {
+  transform: translateY(4px);
+}
+
+*::-webkit-scrollbar-track
+{
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+	border-radius: 10px;
+	background-color: var(--background-color);
+}
+
+*::-webkit-scrollbar
+{
+	width: 12px;
+	background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb
+{
+	border-radius: 10px;
+	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+	background-color: var(--color-primary);
 }

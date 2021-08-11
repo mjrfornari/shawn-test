@@ -5,7 +5,7 @@
 }
 
 .User__user-data {
-    height: 55vh;
+    flex: 1;
     width: calc(100vw - 20px);
     max-width: 800px;
     align-self: center;
@@ -19,22 +19,30 @@
     flex-direction: column;
     flex: 1;
     background-color: var(--item-background);
-    padding: 30px;
+    padding: 20px;
     display: flex;
     color: var(--color-font);
     font-family: 'Source Code Pro', monospace;
     border: 1px solid var(--color-primary);
     border-radius: 10px;
     margin: 20px;
-    max-height: 60vh;
+    margin-bottom: 10px;
     align-items: center;
+    font-size: 0.9rem;
+}
+
+@media screen and (max-width: 321px) {
+    .user-data {
+        padding: 10px;
+    }
 }
 
 .user-data .avatar {
-    max-width: 90%;
+    max-width: 150px;
+    min-width: 150px;
     border-radius: 5px;
     box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
     border-radius: 100%;
 }
 
@@ -47,3 +55,47 @@
     width: 20vw;
     max-width: 60px;
 }
+
+.User__show-repos-button {
+    color: var(--color-secondary);
+    background: var(--color-primary);
+    border: none;
+    border-radius: 0.2rem;
+    padding: 10px;
+    width: 150px;
+    margin: 10px;
+}
+
+.User__repos-list {
+    flex: 1;
+    max-height: 300px;
+    overflow-y: auto;
+    margin-top: 10px;
+}
+
+
+.User__repo-item {
+    background-color: var(--item-background);
+    padding: 10px;
+    max-height: 40px;
+    display: flex;
+    color: var(--color-font);
+    font-family: 'Source Code Pro', monospace;
+    border: 1px solid var(--color-primary);
+    border-radius: 10px;
+    margin: 10px;
+}
+
+
+.User__repo-item a {
+    color: var(--color-font);
+}
+
+.User__repo-item:first-child {
+    margin-top: 0;
+}
+
+.User__repo-item:last-child {
+    margin-bottom: 0;
+}
+

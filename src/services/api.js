@@ -1,9 +1,8 @@
 import axios from 'axios'
 
-const githubApiUrl = 'https://api.github.com'
 
 const api = axios.create({
-    baseURL: githubApiUrl
+    baseURL: 'https://api.github.com'
 });
 
 api.test = () => {
@@ -15,12 +14,10 @@ api.test = () => {
     })
 }
 
-api.getUsers = async (link) => {
+api.getUsers = async (since, setLastPage) => {
     return new Promise(async (resolve, reject) => {
-        if (link) console.log(link.split(githubApiUrl).pop())
-        let reqURL = (link ? link.split(githubApiUrl).pop() : '/users')
-        api.get(reqURL).then(response => {
-            console.log(response.headers.link)
+        api.get('/users', { params: { since }}).then(response => {
+            if (response?.headers?.link?.indexOf("next") === -1) setLastPage(true)
             if (response.status === 200) resolve(response.data)
             else reject(response.statusText)
         }).catch((error) => reject(error))
@@ -36,9 +33,10 @@ api.getUser = async (login) => {
     })
 }
 
-api.getUserProjects = async (userId) => {
+api.getUserRepos = async (login, page, setLastPage) => {
     return new Promise(async (resolve, reject) => {
-        api.get('/zen').then(response => {
+        api.get('/users/'+login+'/repos', { params: { page }}).then(response => {
+            if (response?.headers?.link?.indexOf("next") === -1) setLastPage(true)
             if (response.status === 200) resolve(response.data)
             else reject(response.statusText)
         }).catch((error) => reject(error))

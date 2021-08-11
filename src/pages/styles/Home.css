@@ -5,11 +5,17 @@
 }
 
 .Home__users-list {
-    height: 55vh;
+    height: 70vh;
     overflow-y: auto;
     width: calc(100vw - 20px);
     max-width: 800px;
     align-self: center;
+}
+
+@media screen and (max-height: 767px) {
+    .Home__users-list {
+        height: 55vh;
+    }
 }
 
 .Home__user-item {
@@ -32,27 +38,6 @@
     margin-bottom: 0;
 }
 
-.Home__users-list::-webkit-scrollbar-track
-{
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
-	border-radius: 10px;
-	background-color: var(--background-color);
-}
-
-.Home__users-list::-webkit-scrollbar
-{
-	width: 12px;
-	background-color: transparent;
-}
-
-.Home__users-list::-webkit-scrollbar-thumb
-{
-	border-radius: 10px;
-	-webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-    box-shadow: inset 0 0 6px rgba(0,0,0,.3);
-	background-color: var(--color-primary);
-}
 
 .user-item__avatar {
     height: 80px;
