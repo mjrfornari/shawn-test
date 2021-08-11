@@ -67,7 +67,7 @@ function Home() {
                     <ListGroup>
                         {listedItems}
                     </ListGroup>
-                    <div ref={ref}/>
+                    <div style={{ height: '1px' }} ref={ref}/>
                 </div>
             </div>
         </div>

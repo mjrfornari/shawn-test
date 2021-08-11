@@ -15,7 +15,7 @@ function App() {
 	return (
 		<div className="App">
 			<div className="page--header">
-				<h1><a href="https://shawandpartners.com" target="_blank" rel="noreferrer">Shawn&Partners</a> Challenge</h1>
+				<h1><a href="https://shawandpartners.com" target="_blank" rel="noreferrer">Shaw&Partners</a> Challenge</h1>
 				<ThemeToggler/>
 			</div>
 

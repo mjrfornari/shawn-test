@@ -82,7 +82,7 @@ function User() {
                         <span>Created At: {new Date(user.created_at).toLocaleDateString()}</span>
                         <ListGroup className="User__repos-list">   
                             {listedItems}
-                            <div ref={ref}/>
+                            <div style={{ height: '1px' }} ref={ref}/>
                         </ListGroup>
                     </div> 
                     <button className="backButton" onClick={handleBack}>Back</button>

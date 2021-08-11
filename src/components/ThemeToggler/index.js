@@ -9,11 +9,11 @@ import './index.css'
 
 
 function ThemeToggler(props) {
-    const [selectedTheme, setSelectedTheme] = useState(localStorage.getItem('shawn-test_theme') || 'theme-dark')
+    const [selectedTheme, setSelectedTheme] = useState(localStorage.getItem('shaw-test_theme') || 'theme-dark')
 
     useEffect(() => {
         document.documentElement.className = selectedTheme;
-        localStorage.setItem('shawn-test_theme', selectedTheme);
+        localStorage.setItem('shaw-test_theme', selectedTheme);
     }, [selectedTheme])
 
     
