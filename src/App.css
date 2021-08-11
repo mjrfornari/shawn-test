@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Fjalla+One&family=Source+Code+Pro&display=swap');
+
+.App {
+  font-family: 'Fjalla One', sans-serif;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background: var(--background-color);
+}
+
+
+button {
+  font-family: 'Fjalla One', sans-serif;
+}
+
+.page--header {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+  color: var(--font-color);
+  padding: 0 20px 0 20px;
+
+}
+
+.page--footer {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  color: var(--font-color);
+  margin-bottom: 20px;
+  font-size: 0.6rem;
+}
+
+a {
+  text-decoration: none;
+  color: var(--color-primary);
+  margin-left: 0;
+}
+
+.page--content {
+  color: var(--font-color);
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  flex: 1;
+}
+
+.page--content h2{
+  text-align: center;
+}
